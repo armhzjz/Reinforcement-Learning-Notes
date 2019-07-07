@@ -65,7 +65,7 @@ class DQN_agent:
         # should we load existing weights?
         self.load_weights = load_weights
         
-        self. state_size = state_size
+        self.state_size = state_size
         self.action_size = action_size
         self.memory = deque(maxlen=2000)
         self.gamma = gamma

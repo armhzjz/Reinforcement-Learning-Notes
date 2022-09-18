@@ -1,0 +1,10 @@
+name: DeepRL
+channels:
+  - conda-forge
+  - anaconda
+dependencies:
+  - python=3.10
+  - gym
+  - jupyter
+  - jupyterlab
+  - matplotlib-base

@@ -1,0 +1,63 @@
+// For format details, see https://aka.ms/devcontainer.json
+{
+    "name": "${localWorkspaceFolderBasename}",
+
+    // Due to devcontainer not yet supporting the '--network host' argument when building from a Dockerfile
+    // See: https://github.com/microsoft/vscode-remote-release/issues/3545
+    // Workaround: build the image on the host before asking vscode to build it so that it is re-used
+    "initializeCommand": "docker build --network host --build-arg MAMABAFORGE_VERSION=4.11.0-4 --build-arg USER=pythonist --tag deepdevel:1.0 .devcontainer/",
+
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".",
+        "args": {
+            "USER": "pythonist",
+            "MAMABAFORGE_VERSION": "4.11.0-4"
+        }
+    },
+
+    // Arguments to tuse when running the container
+    "runArgs": [ "--network=host" ],
+
+    // Forward ports (to be able to open jupyter notebooks in the local browser)
+    "forwardPorts": [ "8888:8888" ],
+
+    // Environment variables to set in the container
+    "containerEnv": {},
+
+    // Volumes to mount when running the container
+    "mounts": [
+        "source=${localEnv:HOME}/.gitconfig,target=/home/pythonist/.gitconfig,type=bind",
+        "source=${localEnv:HOME}/.ssh/,target=/home/pythonist/.ssh/,type=bind",
+        "source=${localEnv:HOME}/.wakatime.cfg,target=/home/pythonist/.wakatime.cfg,type=bind",
+        "source=${localEnv:HOME}/.wakatime.bdb,target=/home/pythonist/.wakatime.bdb,type=bind",
+        "source=${localEnv:HOME}/.wakatime.log,target=/home/pythonist/.wakatime.log,type=bind",
+        "source=${localEnv:HOME}/.wakatime/,target=/home/pythonist/.wakatime/,type=bind",
+    ],
+
+    // Set *default* container specific settings.json values on container create.
+    "settings": {
+        "terminal.integrated.profiles.linux": {
+            "bash": {
+                "path": "bash",
+                "icon": "terminal-bash"
+            },
+        },
+        "terminal.integrated.defaultProfile.linux": "bash",
+    },
+
+    // Add the IDs of extensions you want installed when the container is created.
+    "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "ms-python.vscode-pylance",
+        "ms-vscode-remote.remote-ssh",
+        "coenraads.bracket-pair-colorizer-2",
+        "mhutchie.git-graph",
+        "github.remotehub",
+        "eamodio.gitlens",
+        "oderwat.indent-rainbow",
+        "shardulm94.trailing-spaces",
+        "wakatime.vscode-wakatime"
+    ],
+}

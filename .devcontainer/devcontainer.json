@@ -32,32 +32,36 @@
         "source=${localEnv:HOME}/.wakatime.cfg,target=/home/pythonist/.wakatime.cfg,type=bind",
         "source=${localEnv:HOME}/.wakatime.bdb,target=/home/pythonist/.wakatime.bdb,type=bind",
         "source=${localEnv:HOME}/.wakatime.log,target=/home/pythonist/.wakatime.log,type=bind",
-        "source=${localEnv:HOME}/.wakatime/,target=/home/pythonist/.wakatime/,type=bind",
+        "source=${localEnv:HOME}/.wakatime/,target=/home/pythonist/.wakatime/,type=bind"
     ],
 
-    // Set *default* container specific settings.json values on container create.
-    "settings": {
-        "terminal.integrated.profiles.linux": {
-            "bash": {
-                "path": "bash",
-                "icon": "terminal-bash"
+    "customizations": {
+        "vscode": {
+            // Set *default* container specific settings.json values on container create.
+            "settings": {
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "bash",
+                        "icon": "terminal-bash"
+                    }
+                },
+                "terminal.integrated.defaultProfile.linux": "bash"
             },
-        },
-        "terminal.integrated.defaultProfile.linux": "bash",
-    },
 
-    // Add the IDs of extensions you want installed when the container is created.
-    "extensions": [
-        "ms-python.python",
-        "ms-toolsai.jupyter",
-        "ms-python.vscode-pylance",
-        "ms-vscode-remote.remote-ssh",
-        "coenraads.bracket-pair-colorizer-2",
-        "mhutchie.git-graph",
-        "github.remotehub",
-        "eamodio.gitlens",
-        "oderwat.indent-rainbow",
-        "shardulm94.trailing-spaces",
-        "wakatime.vscode-wakatime"
-    ],
+            // Add the IDs of extensions you want installed when the container is created.
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "ms-python.vscode-pylance",
+                "ms-vscode-remote.remote-ssh",
+                "coenraads.bracket-pair-colorizer-2",
+                "mhutchie.git-graph",
+                "github.remotehub",
+                "eamodio.gitlens",
+                "oderwat.indent-rainbow",
+                "shardulm94.trailing-spaces",
+                "wakatime.vscode-wakatime"
+            ]
+        }
+    }
 }
